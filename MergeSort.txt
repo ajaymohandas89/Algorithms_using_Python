@@ -1,0 +1,50 @@
+def mergerSort(list):
+    print('Splitting the list', list)                       #Splitting the list into half
+    if len(list) > 1:
+        midValue = len(list) // 2
+        leftList = list[:midValue]
+        rightList = list[midValue:]
+        # recursively calling the function till size of the list not equal to 1
+        mergerSort(leftList)
+        mergerSort(rightList)
+        i = 0
+        j = 0
+        k = 0
+        while i < len(leftList) and j < len(rightList):
+            if leftList[i] < rightList[j]:                  #Put into mail list of value in left list is less than value in right list
+                list[k] = leftList[i]
+                i+=1
+            else:
+                list[k] = rightList[j]
+                j+=1
+            k+=1
+        while i < len(leftList):                            #Put all elements of left array into main list
+            list[k] = leftList[i]
+            i+=1
+            k+=1
+        while j < len(rightList):                           #Put all elements of right array into main list
+            list[k] = rightList[j]
+            j+=1
+            k+=1
+    print('Sorted list is ', list)
+
+list = []
+while True:
+    print('Enter the length of list')
+    length = int(input())
+    try:
+        if length > 0:
+            break
+        else:
+            print('Length of the list cannot be negative or 0')
+    except ValueError:
+        print('Please enter a number')
+print('enter the numbers in unsorted order')
+for i in range(length):
+    while True:
+        try:
+            list.append(int(input()))
+            break
+        except ValueError:
+            print('Please enter a number')
+mergerSort(list)

@@ -1,0 +1,28 @@
+def bubbleSort(list):
+    for i in range(len(list)):
+        for j in range(len(list) - i - 1):
+            if list[j] > list[j + 1]:
+                list[j], list[j + 1] = list[j + 1], list[j]             #Swap the value in list[j] with list[j+1]
+
+tempList = []
+while True:
+    print('Enter the length of list')
+    length = int(input())
+    try:
+        if length > 0:
+            break
+        else:
+            print('Length of the list cannot be negative or 0')
+    except ValueError:
+        print('Please enter a number')
+print('enter the numbers in unsorted order')
+for i in range(length):
+    while True:
+        try:
+            tempList.append(int(input()))
+            break
+        except ValueError:
+            print('Please enter a number')
+bubbleSort(tempList)
+print('Sorted List is as follows:')
+print(tempList)

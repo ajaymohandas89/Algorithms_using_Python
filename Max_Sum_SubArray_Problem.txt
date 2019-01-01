@@ -1,0 +1,42 @@
+def max_subarray(A):
+    start = end = 0
+    s = 0
+    i = 0
+    list = []
+    max_ending_here = max_so_far = A[0]
+    for x in A[1:]:
+        max_ending_here = max(x, max_ending_here + x)
+        i+=1
+        if max_so_far < max_ending_here:
+            max_so_far = max_ending_here
+            start = s
+            end = i
+        elif max_ending_here < 0:
+            s = i + 1
+    print('The maximum sum from the list is ' + str(max_so_far))
+    for x in range(start, end + 1):
+        list.append(A[x])
+    print('The subarray which gives maximum sum is as follows')
+    print(list)
+list = []
+while True:
+    print('Enter the length of list')
+    length = int(input())
+    try:
+        if length > 0:
+            break
+        else:
+            print('Length of the list cannot be negative or 0')
+    except ValueError:
+        print('Please enter a number')
+print('enter the numbers in unsorted order')
+for i in range(length):
+    while True:
+        try:
+            list.append(int(input()))
+            break
+        except ValueError:
+            print('Please enter a number')
+print('The array list entered is ' +str(list))
+print('Solution for Kadanes maximum sum subarray algorithm')
+max_subarray(list)

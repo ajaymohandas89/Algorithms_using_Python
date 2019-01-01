@@ -1,0 +1,32 @@
+import math
+import pprint
+def calculus(n, r):
+    # defining the calculaion of pascal traingle
+    return int(math.factorial(n)/(math.factorial(r) * math.factorial(n-r)))
+
+def pascal_triangle(row):
+    result = []
+    for count in range(row + 1):
+        row = []                                    #declaring a temporary list
+        for element in range(count + 1):
+            row.append(calculus(count, element))
+        result.append(row)                          #Appending the temporary list to the result and returning it
+    return result
+
+def print_kth_index_of_pascalTriangle(rows, k):
+    print('The pascal traingle is as follows:')
+    tempArray = []
+    for row in pascal_triangle(rows):
+        tempArray.append(row)
+    pprint.pprint(tempArray)                        #pprint beautifies the result
+    print('The kth row is')
+    result = []
+    for j in range(k + 1):
+        result.append(tempArray[k][j])
+    print(result)
+print('Enter the length of pascal traingle and kth index of pascal traingle')
+print_kth_index_of_pascalTriangle(int(input()), int(input()))
+
+
+
+
